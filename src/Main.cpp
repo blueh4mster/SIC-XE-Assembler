@@ -48,17 +48,21 @@ void finish3(){
 
 int main(int argc, char **argv) {
 
-	if (argc != 2) {
-		//Checks whether the correct number of arguments are supplied or not.
-		// If incorrect number of arguments are supplied than program
-		//terminates after printing error message.
-		cout << "\aInvalid number of parameters" << endl;
-		return 1;
-	}
+	// if (argc != 2) {
+	// 	//Checks whether the correct number of arguments are supplied or not.
+	// 	// If incorrect number of arguments are supplied than program
+	// 	//terminates after printing error message.
+	// 	cout << "\aInvalid number of parameters" << endl;
+	// 	return 1;
+	// }
 
   printf("Assembler Started\n");
-	openInitialStreams(argv[1],"../output/listFile.txt");
-	printf("Input Files is being read form %s\n", argv[1]);
+	string input_file_name;
+	cout<<"Enter input file path : ";
+	cin>>input_file_name;
+	cout<<endl;
+	openInitialStreams(input_file_name,"../output/listFile.txt");
+	cout<<"Input Files is being read from : "<<input_file_name<<endl;
 	bool successfullPass1 = true;
 	bool successfullPass2 = true;
 	writeHeader(&opfile);
@@ -131,7 +135,7 @@ int main(int argc, char **argv) {
 		finish3();
 		return 0;
 	}
-	printf("Done Assembling :)\n" );
+	printf("Done Assembling\n" );
 	finish2();
 	return 0;
 
