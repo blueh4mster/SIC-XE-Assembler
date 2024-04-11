@@ -749,6 +749,11 @@ void writeReferRecord(ofstream* file, vector<string>* exrefs) { // 3
 	}
 }
 
-void writeEndRecord() {
-	
+void writeEndRecord(ofstream* file, int starting_add) {
+	string line = "";
+	line = "E^";
+	string starting_add_str = intToString(starting_add, true);
+	adjustStringLength(&starting_add_str, 6, ZERO_CHAR, true);
+	line += starting_add_str;
+	writeLine(file,line);
 }

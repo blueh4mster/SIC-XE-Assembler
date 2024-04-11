@@ -76,6 +76,7 @@ void runPass2(ofstream* opFile, vector<cSect>* cSects, bool& successfullPass2, s
 		writeReferRecord(opFile, &(cSects->at(i).extRef));
 		writeTextRecords(opFile, &(objectCodes[i]), &(cSects->at(i).locpl));
 		writeModRecords(opFile, &(cSects->at(i).mods));
+		writeEndRecord(opFile, starting);
 		writeBorder_Pass2(opFile);
 	}
 

@@ -65,6 +65,6 @@ void writeDefineRecord(ofstream* file, vector<string>* exdefs, map<string, symIn
 
 void writeReferRecord(ofstream* file, vector<string>* exrefs);
 
-void writeEndRecord();
+void writeEndRecord(ofstream* file, int starting_add);
 
 #endif
