@@ -119,10 +119,10 @@ int main(int argc, char **argv) {
 		writeBorder(&opfile);
 		writeSymTab(&opfile, &cSects[i].symTab);
 	}
-
 	if (!ended) {
 		//Check whether program is having a END Clause or not.
 		writeError(&opfile, "The program has no END clause");
+		successfullPass1 = false;
 	}
 
 	if (!successfullPass1) {

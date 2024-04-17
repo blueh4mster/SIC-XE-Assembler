@@ -3,20 +3,14 @@
 line number     address        label    op      operands        
 ===============================================================
 1               000000         SUM      START   0               
-2               000000         FIRST    LDX     #0              
-3               000003                  LDA     #0              
-4               000006                 +LDB     #TABLE2         
-5               00000A         LOOP     ADD     TABLE,X         
-6               00000D                  ADD     TABLE2,X        
-7               000010                  TIX     COUNT           
-8               000013                  JLT     LOOP            
-9               000016                 +STA     TOTAL           
-10              00001A                  RSUB                    
-11              00001D         COUNT    RESW    1               
-12              000020         TABLE    RESW    2000            
-13              001790         TABLE2   RESW    2000            
-14              002F00         TOTAL    RESW    1               
-15              002F03                  END     FIRST           
+2               000000         FIRST    LDA     ZERO            
+3               000003                  LDX     =X'01'          
+4               000006                  ADDR    X,A             
+5               000008                  RSUB                    
+6               00000B                  LTORG                   
+7               00000B         *        =X'01'                  
+8               00000F         ZERO     WORD    0               
+9               000012                  END     FIRST           
 
 ***************************************************************
 
@@ -25,13 +19,9 @@ line number     address        label    op      operands
 =================================
 |	name     address   Abs/Rel	|
 |	--------------------------	|
-|	COUNT     001D         Rel	|
 |	FIRST     0000         Rel	|
-|	LOOP      000A         Rel	|
 |	SUM       0000         Rel	|
-|	TABLE     0020         Rel	|
-|	TABLE2    1790         Rel	|
-|	TOTAL     2F00         Rel	|
+|	ZERO      000F         Rel	|
 =================================
 
 *****************************************************************************************
@@ -40,17 +30,11 @@ line number     address        label    op      operands
 
 line number     address        label    op      operands        n i x b p e    opcode    
 =========================================================================================
-16              000000         SUM      START   0                                        
-17              000000         FIRST    LDX     #0              0 1 0 0 0 0    050000    
-18              000003                  LDA     #0              0 1 0 0 0 0    010000    
-19              000006                 +LDB     #TABLE2         0 1 0 0 0 1    69101790  
-20              00000A         LOOP     ADD     TABLE,X         1 1 1 0 1 0    1BA013    
-21              00000D                  ADD     TABLE2,X        1 1 1 1 0 0    1BC000    
-22              000010                  TIX     COUNT           1 1 0 0 1 0    2F200A    
-23              000013                  JLT     LOOP            1 1 0 0 1 0    3B2FF4    
-24              000016                 +STA     TOTAL           1 1 0 0 0 1    0F102F00  
-25              00001A                  RSUB                    1 1 0 0 0 0    4F0000    
-26              00001D         COUNT    RESW    1                                        
-27              000020         TABLE    RESW    2000                                     
-28              001790         TABLE2   RESW    2000                                     
-29              002F00         TOTAL    RESW    1                                        
+10              000000         SUM      START   0                                        
+11              000000         FIRST    LDA     ZERO            1 1 0 0 1 0    03200C    
+12              000003                  LDX     =X'01'          1 1 0 0 1 0    072005    
+13              000006                  ADDR    X,A             1 1 0 0 0 0    9010      
+14              000008                  RSUB                    1 1 0 0 0 0    4F0000    
+15              00000B                  LTORG                                            
+16              00000B         *        =X'01'                                 01        
+17              00000F         ZERO     WORD    0                              000000    
